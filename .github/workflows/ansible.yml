@@ -26,4 +26,4 @@ jobs:
           ANSIBLE_USER: ubuntu
           ANSIBLE_HOST_KEY_CHECKING: False
         run: |
-          ansible -i ./ansible/hosts.ini all m- ping
+          ansible -i ./ansible/hosts.ini all -m ping
