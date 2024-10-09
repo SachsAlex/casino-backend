@@ -7,11 +7,11 @@ data "terraform_remote_state" "casino_vpc" {
   }
 }
 
-# locals {
-#   ssh_user         = "ubuntu"
-#   key_name         = "casino-entrance-card"
-#   private_key_path = "~/.ssh/casino-entrance-card.pem"
-# }
+locals {
+  ssh_user         = "ubuntu"
+  key_name         = "casino-entrance-card"
+  private_key_path = "~/.ssh/casino-entrance-card.pem"
+}
 
 resource "aws_instance" "ec2-casino-backend" {
   ami                         = "ami-01e444924a2233b07"
@@ -25,17 +25,17 @@ resource "aws_instance" "ec2-casino-backend" {
     Name = "EC2-Casino-Backend"
   }
 
-  # provisioner "remote-exec" {
-  #   inline = ["echo 'Wait until SSH is ready'"]
+  provisioner "remote-exec" {
+    inline = ["echo 'Wait until SSH is ready'"]
 
-  #   connection {
-  #     type        = "ssh"
-  #     user        = local.ssh_user
-  #     private_key = file(local.private_key_path)
-  #     host        = aws_instance.ec2-casino-backend.public_ip
-  #   }
-  # }
-  # provisioner "local-exec" {
-  #   command = "ansible-playbook  -i ${aws_instance.ec2-casino-backend.public_ip}, --private-key ${local.private_key_path} nginx.yaml"
-  # }
+    connection {
+      type        = "ssh"
+      user        = local.ssh_user
+      private_key = file(local.private_key_path)
+      host        = aws_instance.ec2-casino-backend.public_ip
+    }
+  }
+  provisioner "local-exec" {
+    command = "ansible-playbook  -i ${aws_instance.ec2-casino-backend.public_ip}, --private-key ${local.private_key_path} playbook.yaml"
+  }
 }
