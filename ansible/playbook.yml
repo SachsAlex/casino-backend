@@ -2,10 +2,6 @@
   hosts: webservers
   become: yes
   tasks:
-    - name: Ensure Nginx is installed
-      apt:
-        name: nginx
-        state: present
     - name: Ensure Git is installed
       apt:
         name: git
@@ -17,5 +13,12 @@
     - name: Display Git Version
       debug:
         var: git_version_output.stdout
-# ansible -i hosts.ini all -m ping
-# ansible-playbook -i hosts.ini playbook.yml
+
+    - name: Clone Repository
+      shell: git clone https://github.com/SachsAlex/casino-backend.git
+
+    - name: npm install
+      shell: npm install
+
+    - name: Run Backend
+      shell: npm run dev
