@@ -10,7 +10,7 @@ data "terraform_remote_state" "casino_vpc" {
 resource "aws_instance" "ec2-casino-backend" {
   ami                         = "ami-01e444924a2233b07"
   instance_type               = var.instance_type
-  subnet_id                   = data.terraform_remote_state.vpc.outputs.subnet_id1
+  subnet_id                   = data.terraform_remote_state.casino_vpc.outputs.subnet_id1
   security_groups             = [aws_security_group.http.id]
   key_name                    = var.key_name
   associate_public_ip_address = true
