@@ -1,7 +1,7 @@
 jobs:
   deploy:
     name: Deploy Ansible Playbook
-    if: github.event.pull_request.merged == true
+    on: workflow_dispatch
     runs-on: ubuntu-latest
     environment: production
     steps:
