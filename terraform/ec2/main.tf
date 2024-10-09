@@ -1,4 +1,4 @@
-data "terraform_remote_state" "vpc" {
+data "terraform_remote_state" "casino_vpc" {
   backend = "s3"
   config = {
     bucket = "casino-2310-bucket"
@@ -7,7 +7,7 @@ data "terraform_remote_state" "vpc" {
   }
 }
 
-resource "aws_instance" "my_instance" {
+resource "aws_instance" "ec2-casino-backend" {
   ami                         = "ami-01e444924a2233b07"
   instance_type               = var.instance_type
   subnet_id                   = data.terraform_remote_state.vpc.outputs.subnet_id1
