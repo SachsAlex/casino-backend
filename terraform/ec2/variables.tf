@@ -10,5 +10,5 @@ variable "instance_type" {
 
 variable "key_name" {
   description = "SSH key name"
-  default     = "Key1024"
+  default     = "casino-entrance-card"
 }

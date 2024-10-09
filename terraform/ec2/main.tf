@@ -2,7 +2,7 @@ data "terraform_remote_state" "vpc" {
   backend = "s3"
   config = {
     bucket = "casino-2310-bucket"
-    key    = "ec2-casino-backend/vpc.tfstate"
+    key    = "ec2-casino/vpc.tfstate"
     region = var.aws_region
   }
 }
@@ -16,6 +16,6 @@ resource "aws_instance" "my_instance" {
   associate_public_ip_address = true
 
   tags = {
-    Name = "MyInstance"
+    Name = "EC2-Casino-Backend"
   }
 }
