@@ -1,5 +1,5 @@
 resource "aws_security_group" "http" {
-  vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id
+  vpc_id = data.terraform_remote_state.casino_vpc.outputs.vpc_id
 
   ingress {
     from_port   = 80
