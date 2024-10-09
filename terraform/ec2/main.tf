@@ -1,8 +1,8 @@
 data "terraform_remote_state" "vpc" {
   backend = "s3"
   config = {
-    bucket = "casino-terraform-bucket"
-    key    = "ec2-casino/vpc.tfstate"
+    bucket = "casino-2310-bucket"
+    key    = "ec2-casino-backend/vpc.tfstate"
     region = var.aws_region
   }
 }
