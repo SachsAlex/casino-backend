@@ -1,7 +1,10 @@
+name: Deploy Ansible
+
+on: workflow_dispatch
+
 jobs:
   deploy:
     name: Deploy Ansible Playbook
-    on: workflow_dispatch
     runs-on: ubuntu-latest
     environment: production
     steps:
