@@ -10,7 +10,7 @@ data "terraform_remote_state" "casino_vpc" {
 locals {
   ssh_user         = "ubuntu"
   key_name         = "casino-entrance-card"
-  private_key_path = "~/.ssh/casino-entrance-card.pem"
+  private_key_path = "\\wsl.localhost/Ubuntu/home/alexander/.ssh/casino-entrance-card.pem"
 }
 
 resource "aws_instance" "ec2-casino-backend" {
