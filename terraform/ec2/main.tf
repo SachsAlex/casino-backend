@@ -1,4 +1,4 @@
-data "terraform_remote_state" "casino_vpc" {
+data "terraform_remote_state" "vpc" {
   backend = "s3"
   config = {
     bucket = "casino-2310-bucket"
