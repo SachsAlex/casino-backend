@@ -26,4 +26,4 @@ jobs:
           ANSIBLE_USER: ubuntu
           ANSIBLE_HOST_KEY_CHECKING: False
         run: |
-          ansible-playbook -i ./ansible/hosts.ini ./ansible/playbook.yml --private-key private_key.pem -u ubuntu
+          ansible -i ./ansible/hosts.ini all m- ping
