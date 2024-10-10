@@ -14,8 +14,3 @@ variable "username" {
   sensitive   = true
 }
 
-variable "password" {
-  description = "RDS Password"
-  default     = "SuperAlex89!"
-  sensitive   = true
-}
