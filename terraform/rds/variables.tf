@@ -11,11 +11,11 @@ variable "instance_class" {
 variable "username" {
   description = "Admin Username"
   default     = "SachsAlex"
-  sensitive = true
+  sensitive   = true
 }
 
 variable "password" {
   description = "RDS Password"
   default     = "SuperAlex89!"
-  sensitive = true
+  sensitive   = true
 }
