@@ -12,9 +12,9 @@
       register: git_version_output
 
     - name: Install Node.js
-      apt:
-        name: nodejs
-        state: present
+      uses: actions/setup-node@v4
+      with:
+        node-version: "20"
 
     - name: Check Node version
       shell: node -v
