@@ -11,10 +11,34 @@
       shell: git -v
       register: git_version_output
 
+    - name: Add NodeSource repository
+      apt_key:
+        url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+        state: present
+      apt_repository:
+        repo: deb https://deb.nodesource.com/node_20.x {{ ansible_distribution_release }} main
+        state: present
+
     - name: Install Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: "20"
+      apt:
+        name: nodejs
+        state: present
+        update_cache: yes
+
+    - name: Install npm
+      apt:
+        name: npm
+        state: present
+
+    # - name: Install Node.js
+    #   apt:
+    #     name: nodejs
+    #     state: present
+
+    # - name: Install Node.js
+    #   uses: actions/setup-node@v4
+    #   with:
+    #     node-version: "20"
 
     - name: Check Node version
       shell: node -v
