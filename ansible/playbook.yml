@@ -44,5 +44,5 @@
     - name: npm install
       shell: cd ./casino-backend/ && sudo npm install
 
-    - name: Run Backend
-      shell: cd ./casino-backend/ && npm run dev
+    # - name: Run Backend
+    #   shell: cd ./casino-backend/ && npm run dev
