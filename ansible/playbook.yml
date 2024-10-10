@@ -1,7 +1,12 @@
 - name: Install GitHub on Ubuntu and Start the Backend
+  gather_facts: yes
   hosts: webservers
   become: yes
   tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
     - name: Ensure Git is installed
       apt:
         name: git
@@ -11,36 +16,30 @@
       shell: git -v
       register: git_version_output
 
-    - name: Add NodeSource key
-      apt_key:
-        url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    - name: Install Node.js dependencies
+      apt:
+        name: "{{ item }}"
         state: present
+      loop:
+        - curl
+        - software-properties-common
 
-    - name: Add NodeSource Repository
+    - name: Add NodeSource repository
       apt_repository:
-        repo: deb https://deb.nodesource.com/node_20.x {{ ansible_distribution_release }} main
+        repo: "deb https://deb.nodesource.com/node_14.x {{ ansible_distribution_release }} main"
         state: present
+        update_cache: yes
+        filename: nodesource
 
     - name: Install Node.js
       apt:
         name: nodejs
         state: present
-        update_cache: yes
 
-    - name: Install npm
+    - name: Install build-essential
       apt:
-        name: npm
+        name: build-essential
         state: present
-
-    # - name: Install Node.js
-    #   apt:
-    #     name: nodejs
-    #     state: present
-
-    # - name: Install Node.js
-    #   uses: actions/setup-node@v4
-    #   with:
-    #     node-version: "20"
 
     - name: Check Node version
       shell: node -v
