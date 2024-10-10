@@ -8,7 +8,7 @@ data "terraform_remote_state" "casino_vpc" {
 }
 
 resource "aws_instance" "ec2-casino-backend" {
-  ami                         = "ami-01e444924a2233b07"
+  ami                         = "ami-0084a47cc718c111a"
   instance_type               = var.instance_type
   subnet_id                   = data.terraform_remote_state.casino_vpc.outputs.subnet_id1
   security_groups             = [aws_security_group.http.id]
