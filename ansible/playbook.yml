@@ -1,4 +1,5 @@
 - name: Install GitHub on Ubuntu and Start the Backend
+  hosts: webservers
   become: yes
   tasks:
     - name: Ensure Git is installed
