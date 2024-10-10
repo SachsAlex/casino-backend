@@ -15,7 +15,7 @@ resource "aws_security_group" "http" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-    ingress {
+  ingress {
     from_port   = 0
     to_port     = 5050
     protocol    = "tcp"
