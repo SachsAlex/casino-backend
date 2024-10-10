@@ -42,10 +42,10 @@
       shell: git clone https://github.com/SachsAlex/casino-backend.git
 
     - name: Move to Repository
-      shell: cd ./casino-backend
+      shell: cd ./casino-backend/
 
     - name: npm install
-      shell: npm install
+      shell: sudo npm install
 
     - name: Run Backend
       shell: npm run dev
