@@ -23,7 +23,8 @@ jobs:
 
       - name: Run Ansible Playbook
         env:
+          ANSIBLE_PRIVATE_KEY: ${{ secrets.ANSIBLE_SSH_PRIVATE }}
           ANSIBLE_USER: ubuntu
           ANSIBLE_HOST_KEY_CHECKING: False
         run: |
-          ansible -i ./ansible/hosts.ini all -m ping
+          ansible -i ./ansible/hosts.ini all -m ping --key-file <(echo "$ANSIBLE_PRIVATE_KEY")
