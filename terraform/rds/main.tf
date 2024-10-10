@@ -17,8 +17,8 @@ resource "aws_db_instance" "casino_rds" {
   engine                 = "mysql"
   engine_version         = "8.0.39"
   allocated_storage      = 10
-  username               = "SachsAlex"
-  password               = "SuperAlex89!"
+  username               = var.username
+  password               = var.password
   publicly_accessible    = true
   db_subnet_group_name   = aws_db_subnet_group.rds_subnet_group.name
   vpc_security_group_ids = [aws_security_group.rds_sg.id]

@@ -1,5 +1,3 @@
 .terraform
 .terraform.lock.hcl
 terraform.tfvars
-
-ansible-playbook -i ./ansible/hosts.ini ./ansible/playbook.yml --private-key private_key.pem -u ubuntu

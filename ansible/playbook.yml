@@ -10,37 +10,23 @@
       shell: git -v
       register: git_version_output
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "20"
+
+    - name: Check Node version
+      shell: node -v
+      register: node_version_output
+
     - name: Clone Repository
       shell: git clone https://github.com/SachsAlex/casino-backend.git
 
     - name: Move to Repository
       shell: cd ./casino-backend
 
-    - name: Show Content
-      shell: ls -a
+    - name: npm install
+      shell: npm install
 
-    # - name: Install Node.js dependencies
-    #   apt:
-    #     name: "{{ item }}"
-    #     state: present
-    #   loop:
-    #     - curl
-    #     - software-properties-common
-
-    # - name: Add NodeSource repository
-    #   apt_repository:
-    #     repo: "deb https://deb.nodesource.com/node_14.x {{ ansible_distribution_release }} main"
-    #     state: present
-    #     update_cache: yes
-    #     filename: nodesource
-
-    # - name: Install Node.js
-    #   apt:
-    #     name: nodejs
-    #     state: present
-
-    # - name: npm install
-    #   shell: npm install
-
-    # - name: Run Backend
-    #   shell: npm run dev
+    - name: Run Backend
+      shell: npm run dev
