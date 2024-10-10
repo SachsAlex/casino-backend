@@ -12,8 +12,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up SSH
         run: |
-          echo "${{ secrets.ANSIBLE_SSH_PRIVATE }}" > private_key.pem
-          chmod 600 private_key.pem
+          mkdir -p ~/.ssh
+          echo "${{ secrets.ANSIBLE_SSH_PRIVATE }}" > ~/.ssh/id_rsa
+          chmod 600  ~/.ssh/id_rsa
 
       - name: Install Ansible
         shell: bash
@@ -27,4 +28,4 @@ jobs:
           ANSIBLE_USER: ubuntu
           ANSIBLE_HOST_KEY_CHECKING: False
         run: |
-          ansible -i ./ansible/hosts.ini all -m ping --key-file <(echo "$ANSIBLE_PRIVATE_KEY")
+          ansible -i ./ansible/hosts.ini all -m ping
