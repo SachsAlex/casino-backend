@@ -11,10 +11,12 @@
       shell: git -v
       register: git_version_output
 
-    - name: Add NodeSource repository
+    - name: Add NodeSource key
       apt_key:
         url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
         state: present
+
+    - name: Add NodeSource Repository
       apt_repository:
         repo: deb https://deb.nodesource.com/node_20.x {{ ansible_distribution_release }} main
         state: present
