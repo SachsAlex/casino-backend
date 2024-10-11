@@ -1,14 +1,13 @@
-# MCLX Casino
+# MCLX Casino Backend
 
 Casino App to play games, save highscores and to add new games. Project: MCLX Casino.
 
 ## Description
 
-Play BlackJack, bet a certain amount with the chips and save new Highscores. <br />
-If you plan to use this repository, please reference **Acknowledgments**. <br />
-The used icons are only for free, if you give credit to the creators via a link to the original. <br />
+This repository is the backend of our MCLX Casino project. <br />
+The code is build for a AWS infrastructure and works fine so far. <br />
 <br />
-Note that, if you want the full experience you will need the backend for this project!
+Note that, if you want the full experience you will need the frontend for this project!
 
 ## Getting Started
 
@@ -20,10 +19,10 @@ Note that, if you want the full experience you will need the backend for this pr
 
 ### Installing
 
-- [How/where to download your program](https://github.com/SachsAlex/casino-frontend.git)
+- [How/where to download your program](https://github.com/SachsAlex/casino-backend.git)
 
 ```
-git clone https://github.com/SachsAlex/casino-frontend.git
+git clone https://github.com/SachsAlex/casino-backend.git
 ```
 
 ```
@@ -35,14 +34,31 @@ npm install
 - How to run the program
 
 ```
-npm run start
+npm run dev
 ```
 
-### User SignUp Note
+### .env
 
-- the date of birth needs to fulfill the following criteria:
+- the .env file will not be uploaded
+- .env needs to be created on the AWS EC2 of the backend
 
-YYYY,MM,DD - the commas need to be present as well as all the digits of the date
+```
+ssh -i <key.pem> ubuntu@<public-ip_backend-ec2>
+sudo nano .env
+```
+
+
+- the following criteria are needed:
+
+```
+PORT=<connection between frontend and backend>
+DB_NAME=<for mysql connection>
+DB_USERNAME=<saved in AWS Parameter Store>
+DB_PASSWORD=<saved in AWS Parameter Store>
+DB_HOST=<endpoint of RDS database>
+NODE_ENV=dev
+JWT_SECRET=<your own secret>
+```
 
 ## Authors
 
@@ -60,7 +76,3 @@ Carsten Jahn
 ## License
 
 This project is licensed under the [MIT] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Icons:
